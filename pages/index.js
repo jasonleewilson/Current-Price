@@ -21,6 +21,13 @@ export default function Home({ filteredCoins }) {
       <div className='coin_app'>
         <SearchBar type='text' placeholder='Search' onChange={handleChange} />
         <CoinList filteredCoins={allCoins} />
+
+        <footer>
+          <div class="col-xs-12">
+              <h1>About</h1>
+              <p>Hello.  My name is <a href="https://jasonleewilson.com/" target="_blank">Jason Lee Wilson</a>. I built this site with AngularJS and json data from <a href="https://coinmarketcap.com" target="_blank">coinmarketcap.com</a>.  View the source on <a href="https://github.com/jasonleewilson/current-price.com" target="_blank">Github</a>.</p>
+          </div>
+        </footer>
       </div>
     </Layout>
   );
