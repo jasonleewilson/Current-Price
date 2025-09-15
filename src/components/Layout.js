@@ -83,7 +83,7 @@ const Layout = ({ children, title = 'Current-Price' }) => {
           </a>
         </Link>
       </header>
-      <main>{children}</main>
+      <main>{children}&nbsp;</main>
     </div>
   );
 };
