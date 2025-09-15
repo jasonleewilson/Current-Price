@@ -11,6 +11,11 @@ const Coins = ({
   priceChange,
   id
 }) => {
+  // Add a defensive check to ensure priceChange is not null or undefined
+  const formattedPriceChange = priceChange !== null && priceChange !== undefined
+    ? priceChange.toFixed(2)
+    : 'N/A'; // Or any other placeholder value
+
   return (
     <Link href='/coin/[id]' as={`/coin/${id}`}>
       <a>
@@ -23,20 +28,20 @@ const Coins = ({
             </div>
             <div className={styles.coin_data}>
               <p className={styles.coin_price}>${price}</p>
-              <p className={styles.coin_volume}>${volume.toLocaleString()}</p>
+              <p className={styles.coin_volume}>${volume?.toLocaleString()}</p> {/* Use optional chaining for volume too */}
 
               {priceChange < 0 ? (
-                <p className={(styles.coin_percent, styles.red)}>
-                  {priceChange.toFixed(2)}%
+                <p className={`${styles.coin_percent} ${styles.red}`}>
+                  {formattedPriceChange}%
                 </p>
               ) : (
-                <p className={(styles.coin_percent, styles.green)}>
-                  {priceChange.toFixed(2)}%
+                <p className={`${styles.coin_percent} ${styles.green}`}>
+                  {formattedPriceChange}%
                 </p>
               )}
 
               <p className={styles.coin_marketcap}>
-                Mkt Cap: ${marketcap.toLocaleString()}
+                Mkt Cap: ${marketcap?.toLocaleString()}
               </p>
             </div>
           </div>
